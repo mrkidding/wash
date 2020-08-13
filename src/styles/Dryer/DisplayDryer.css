@@ -1,0 +1,23 @@
+.DisplayDryer {
+    display: flex;
+    padding-left: 0px;
+}
+.DisplayDryer .machines {
+    padding-left: 40px;
+}
+.DisplayDryer .remaining_time {
+    text-align: center;
+}
+.DisplayDryer .choose {
+    text-align: center;
+}
+.DisplayDryer .damaged {
+    text-align: center;
+}
+.DisplayDryer .finished {
+    text-align: center;
+}
+.DisplayDryer .id-number {
+    padding-top: 10px;
+    text-align: center;
+}

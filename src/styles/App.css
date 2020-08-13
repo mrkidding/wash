@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+@import "Header.css";
+@import "Footer.css";
+@import "Display.css";
+@import "Dryer/DisplayDryer.css";
+@import "NavBar.css";

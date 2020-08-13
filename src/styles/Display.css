@@ -1,0 +1,17 @@
+.Display {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    padding-right: 25px;
+}
+.Display .machines {
+    padding-left: 40px;
+}
+.Display .top_line {
+    text-align: center;
+}
+
+.Display .id-number {
+    padding-top: 10px;
+    text-align: center;
+}
