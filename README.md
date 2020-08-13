@@ -4,6 +4,8 @@ This is the front end of a web application: washhelper.
 
 The user can switch to washer and dryer and see the status of different machines.
 
+## Libraries
+
 Before running, you need to install several libraries:
 
 Ant Design:
@@ -11,6 +13,8 @@ Ant Design:
 
 React-router-dom:
 `npm install --save react-router-dom`
+
+## Start
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
