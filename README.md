@@ -14,6 +14,10 @@ Ant Design:
 React-router-dom:
 `npm install --save react-router-dom`
 
+Axios:
+
+`npm install axios`
+
 ## Start
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
