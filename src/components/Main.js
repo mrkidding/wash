@@ -9,13 +9,16 @@ class Main extends Component {
     getDryer = () =>{
         return <NavBar machineType="dryer"/>;
     }
+    getReport = () => {
+        return <Report firstName = "Jay"  phone = "1234567890" />;
+    }
     render() {
         return (
             <div className="Main">
                 <Switch>
                     <Route path="/washer" render={this.getWasher}/>
                     <Route path="/dryer" render={this.getDryer}/>
-                    <Route path="/report" component={Report}/>
+                    <Route path="/report" render = {this.getReport}/>
                     <Route path="/" render={this.getWasher}/>
                 </Switch>
             </div>
