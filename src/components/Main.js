@@ -10,7 +10,7 @@ class Main extends Component {
         return <NavBar machineType="dryer"/>;
     }
     getReport = () => {
-        return <Report firstName = "Jay"  phone = "1234567890" />;
+        return <Report firstName = "Jay"  phone = "1234567890" machineId ='a12' />;
     }
     render() {
         return (

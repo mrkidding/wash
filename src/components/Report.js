@@ -9,6 +9,7 @@ class Report extends Component {
             firstName : this.props.firstName,
             lastName : this.props.lastName,
             phone: this.props.phone,
+            machineId : this.props.machineId,
             issue: ''
         }
     }
@@ -28,6 +29,10 @@ class Report extends Component {
                     <label htmlFor="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone" placeholder="Your phone number.." value = {this.state.phone}
                     onChange={e => this.setState({ phone: e.target.value})}></input>
+                    
+                    <label htmlFor="machineId"> Machine ID</label>
+                    <input type="text" id="machineId" name="machineId" placeholder="The machine id" value = {this.state.machineId} 
+                    onChange={e => this.setState({ lastName: e.target.value})}></input>
 
                     <label htmlFor="issue">Issue</label>
                     <textarea id="issue" name="issue" placeholder="Write down the issue.." 
@@ -44,6 +49,7 @@ class Report extends Component {
             firstName : this.state.firstName,
             lastName : this.state.lastName,
             phone: this.state.phone,
+            machineId : this.state.machineId,
             issue: this.state.issue
         }
         console.log(data);
