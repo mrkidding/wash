@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import logo from '../assets/xiyi.svg';
-import { LogoutOutlined, FormOutlined } from '@ant-design/icons';
-import { createFromIconfontCN } from '@ant-design/icons';
+import {LogoutOutlined, FormOutlined} from '@ant-design/icons';
+import {createFromIconfontCN} from '@ant-design/icons';
 import {Menu} from 'antd';
-import {Link } from 'react-router-dom';
-class Header extends Component {
+import {Link} from 'react-router-dom';
 
+class Header extends Component {
 
     render() {
         const IconFont = createFromIconfontCN({
@@ -17,26 +17,26 @@ class Header extends Component {
                 <p className="title">
                     WashHelper
                 </p>
-                <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ fontSize: '16px' }}>
-                    <Menu.Item key="1" icon={<IconFont type="icon-shuidi" style={{ fontSize: '17px' }}/>}>
-                        <Link to="/washer">washer</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<IconFont type="icon-honggan1" style={{ fontSize: '17px' }}/>}>
-                        <Link to="/dryer">dryer</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<FormOutlined />}>
-                        <Link to="/report">report</Link>
-                    </Menu.Item>
-                </Menu>
-                {/*<ul id="menu" className="main-menu">
-                    <li>washer</li>
-                    <li>dryer</li>
-                    <li>report</li>
-                </ul>*/}
 
-                <a className="logout" >
-                    <LogoutOutlined />{'  '}Logout
-                </a>
+                {this.props.isLoggedIn ?
+                    <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{fontSize: '16px'}}>
+                        <Menu.Item key="1" icon={<IconFont type="icon-shuidi" style={{fontSize: '17px'}}/>}>
+                            <Link to="/washer">washer</Link>
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<IconFont type="icon-honggan1" style={{fontSize: '17px'}}/>}>
+                            <Link to="/dryer">dryer</Link>
+                        </Menu.Item>
+                        <Menu.Item key="3" icon={<FormOutlined/>}>
+                            <Link to="/report">report</Link>
+                        </Menu.Item>
+                    </Menu>: null
+
+                }
+
+                {this.props.isLoggedIn ?
+                    <a className="logout" onClick={this.props.handleLogout}>
+                        <LogoutOutlined/>{' '}Logout
+                    </a> : null}
             </header>
         );
     }

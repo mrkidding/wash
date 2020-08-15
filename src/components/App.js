@@ -1,16 +1,39 @@
-import React from 'react';
-import '../styles/App.css';
+import React, {Component} from 'react';
 import Header from './Header';
-import Footer from "./Footer";
 import Main from "./Main";
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
-  );
+import Footer from "./Footer";
+import {TOKEN_KEY} from '../constants';
+import '../styles/App.css';
+
+class App extends Component {
+    state = {
+        isLoggedIn: Boolean(localStorage.getItem(TOKEN_KEY)),
+    }
+
+    handleLoginSucceed = (token) => {
+        localStorage.setItem(TOKEN_KEY, token)
+        this.setState({isLoggedIn: true});
+    }
+    handleLogout = () => {
+        localStorage.removeItem(TOKEN_KEY);
+        this.setState({isLoggedIn: false});
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Header handleLogout={this.handleLogout}
+                        isLoggedIn={this.state.isLoggedIn}
+                />
+
+                <Main handleLoginSucceed={this.handleLoginSucceed}
+                      isLoggedIn={this.state.isLoggedIn}
+                />
+
+                <Footer />
+            </div>
+        )
+    }
 }
 
 export default App;
