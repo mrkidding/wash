@@ -2,19 +2,12 @@
     height: 22px;
     margin-right: 10px;
 }
-.available_logo {
+.tab-text{
+    display: flex;
+}
+
+.status-logo {
     height: 22px;
     margin-right: 10px;
 }
-.using_logo {
-    height: 22px;
-    margin-right: 10px;
-}
-.finished_logo {
-    height: 22px;
-    margin-right: 10px;
-}
-.occupied_logo {
-    height: 22px;
-    margin-right: 10px;
-}
+

@@ -110,11 +110,11 @@ class NavBar extends Component {
             machineList = this.state.dryerList;
         }
         return (
-            <Tabs defaultActiveKey="1" tabPosition="left" size="large">
+            <Tabs  defaultActiveKey="1" tabPosition="left" size="large" >
                 <TabPane
                     tab={
-                        <span>
-                            <img src={xiyiji} className="xiyiji" alt="logo"/>
+                        <span className="tab-text">
+                            <img src={xiyiji} className="status-logo" alt="logo"/>
                             All machines
                         </span>
                     }
@@ -124,8 +124,8 @@ class NavBar extends Component {
                 </TabPane>
                 <TabPane
                     tab={
-                        <span>
-                            <img src={available_logo} className="available_logo" alt="logo"/>
+                        <span className="tab-text">
+                            <img src={available_logo} className="status-logo" alt="logo"/>
                             Available
                         </span>
                     }
@@ -135,8 +135,8 @@ class NavBar extends Component {
                 </TabPane>
                 <TabPane
                     tab={
-                        <span>
-                            <img src={using_logo} className="using_logo" alt="logo"/>
+                        <span className="tab-text">
+                            <img src={using_logo} className="status-logo" alt="logo"/>
                             Using
                         </span>
                     }
@@ -146,8 +146,8 @@ class NavBar extends Component {
                 </TabPane>
                 <TabPane
                     tab={
-                        <span>
-                            <img src={finished_logo} className="finished_logo" alt="logo"/>
+                        <span className="tab-text">
+                            <img src={finished_logo} className="status-logo" alt="logo"/>
                             Finished
                         </span>
                     }
@@ -157,8 +157,8 @@ class NavBar extends Component {
                 </TabPane>
                 <TabPane
                     tab={
-                        <span>
-                            <img src={occupied_logo} className="occupied_logo" alt="logo"/>
+                        <span className="tab-text">
+                            <img src={occupied_logo} className="status-logo" alt="logo"/>
                             Occupied
                         </span>
                     }
