@@ -31,7 +31,7 @@ class Report extends Component {
                     onChange={e => this.setState({ phone: e.target.value})}></input>
                     
                     <label htmlFor="machineId"> Machine ID</label>
-                    <input type="text" id="machineId" name="machineId" placeholder="The machine id" value = {this.state.machineId} 
+                    <input type="text" id="machineId" name="machineId" placeholder={this.state.machineId} value = {this.state.machineId}
                     onChange={e => this.setState({ lastName: e.target.value})}></input>
 
                     <label htmlFor="issue">Issue</label>

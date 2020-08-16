@@ -1,0 +1,20 @@
+.left_detail_side {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    height: 760px;
+    padding: 20px;
+}
+
+.right_detail_side {
+    margin-left: 240px;
+}
+
+.reportButton {
+    background-color: #ff7e85;
+    margin-left: 15px;
+}
+
+.reserveButton {
+
+}

@@ -1,7 +1,31 @@
 import React, {Component} from 'react';
 import { createFromIconfontCN } from '@ant-design/icons';
+import { Modal, Button, message} from 'antd';
+import detail_picture from "../assets/detail_washer.jpg";
+import {Link} from 'react-router-dom';
 
 class Machine extends Component {
+    state = { visible: false };
+
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
+    handleOk = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    };
+
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    };
 
     render() {
         const {status, remaining_time, id, machineType} = this.props;
@@ -50,8 +74,40 @@ class Machine extends Component {
         return (
             <div className="machines">
                 <p className="top_line">{top}</p>
-                <Machines type={icon} style={{ fontSize: '90px', marginLeft: '7px' }}/>
-                <p className="id-number">ID: {id}</p>
+                <Machines type={icon}
+                          style={{ fontSize: '90px', marginLeft: '7px' }}
+                />
+                <p className="id-number" onClick={this.showModal} >ID: {id}</p>
+                <Modal
+                    title="Details for this machine"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                >
+                    <div className="left_detail_side">
+                        <img className="detail_picture"
+                             src={detail_picture}
+                             alt="logo"
+                        />
+                    </div>
+                    <div className="right_detail_side">
+                        <b>SPEED QUEEN</b>
+                        <p> {machineType} </p>
+                        <p><b>Machine ID:</b>   {id} </p>
+                        <p><b>Status:</b> {status} </p>
+                        <p><b>Host:</b> someone using this machine </p>
+                        <p><b>Remaining Time:</b>  {remaining_time} </p>
+                        <Button className="reserveButton"
+                                type="primary"
+                                onClick={ () => {
+                                    message.info('Reserve Successfully !!');
+                                }}
+                        >Reserve</Button>
+                        <Link to="/report"
+                              machineId={id}
+                        ><Button className="reportButton">Report</Button></Link>
+                    </div>
+                </Modal>
             </div>
         );
     }
