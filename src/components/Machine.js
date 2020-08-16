@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
-import { createFromIconfontCN } from '@ant-design/icons';
 import { Modal, Button, message} from 'antd';
 import detail_picture from "../assets/detail_washer.jpg";
 import {Link} from 'react-router-dom';
+import icon_washer_available from  "../assets/machine_img/washer-available.svg";
+import icon_washer_using from "../assets/machine_img/washer-using.svg";
+import icon_washer_finished from "../assets/machine_img/washer-finished.svg";
+import icon_washer_occupied from "../assets/machine_img/washer-occupied.svg";
+import icon_dryer_available from "../assets/machine_img/dryer-available.svg";
+import icon_dryer_using from "../assets/machine_img/dryer-using.svg";
+import icon_dryer_finished from "../assets/machine_img/dryer-finished.svg";
+import icon_dryer_occupied from "../assets/machine_img/dryer-occupied.svg";
 
 class Machine extends Component {
     state = { visible: false };
@@ -31,53 +38,49 @@ class Machine extends Component {
         const {status, remaining_time, id, machineType} = this.props;
         let icon = "icon-available";
         let top = "hi";
-        let Machines = createFromIconfontCN({
-            scriptUrl: "//at.alicdn.com/t/font_2003258_sh0kybrk45g.js", // 在 iconfont.cn 上生成
-        });
         if (machineType === "washer"){
             if (status === "available"){
-                icon = "icon-washer-available";
+                icon = icon_washer_available;
                 top = "Available";
             }else if (status === "using"){
-                icon = "icon-washer-using";
+                icon = icon_washer_using;
                 top = remaining_time;
             }else if (status === "finished"){
-                icon = "icon-washer-finished";
+                icon = icon_washer_finished;
                 top = "Finished!";
             }else if (status === "occupied"){
-                icon = "icon-washer-occupied";
+                icon = icon_washer_occupied;
                 top = remaining_time;
             }else {
-                icon = "icon-washer-occupied";
+                icon = icon_washer_occupied;
                 top = "Damaged";
             }
         }else {
             if (status === "available"){
-                icon = "icon-dryer-available";
+                icon = icon_dryer_available;
                 top = "Available";
             }else if (status === "using"){
-                icon = "icon-dryer-using";
+                icon = icon_dryer_using;
                 top = remaining_time;
             }else if (status === "finished"){
-                icon = "icon-dryer-finished";
+                icon = icon_dryer_finished;
                 top = "Finished!";
             }else if (status === "occupied"){
-                icon = "icon-dryer-occupied";
+                icon = icon_dryer_occupied;
                 top = remaining_time;
             }else {
-                icon = "icon-dryer-occupied";
+                icon = icon_dryer_occupied;
                 top = "Damaged";
             }
         }
+        console.log(icon);
 
 
         return (
             <div className="machines">
                 <p className="top_line">{top}</p>
-                <Machines type={icon}
-                          style={{ fontSize: '90px', marginLeft: '7px' }}
-                />
-                <p className="id-number" onClick={this.showModal} >ID: {id}</p>
+                <img src={icon} className="machineLogo" alt="logo" onClick={this.showModal}/>
+                <p className="id-number"  >ID: {id}</p>
                 <Modal
                     title="Details for this machine"
                     visible={this.state.visible}

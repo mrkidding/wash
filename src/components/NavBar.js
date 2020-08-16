@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { Tabs } from 'antd';
-import xiyiji from '../assets/xiyiji.svg';
-import available_logo from '../assets/available_logo.svg';
-import using_logo from '../assets/using_logo.svg';
-import finished_logo from '../assets/finished_logo.svg';
-import occupied_logo from '../assets/occupied_logo.svg';
+import xiyiji from '../assets/status_logo/xiyiji.svg';
+import available_logo from '../assets/status_logo/available_logo.svg';
+import using_logo from '../assets/status_logo/using_logo.svg';
+import finished_logo from '../assets/status_logo/finished_logo.svg';
+import occupied_logo from '../assets/status_logo/occupied_logo.svg';
 import Display from "./Display";
 const { TabPane } = Tabs;
 
