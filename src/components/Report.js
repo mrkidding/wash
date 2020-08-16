@@ -6,10 +6,8 @@ class Report extends Component {
     constructor(props){
         super(props);
         this.state = {
-            firstName : this.props.firstName,
-            lastName : this.props.lastName,
-            phone: this.props.phone,
             machineId : this.props.machineId,
+            issueType:'occupied',
             issue: ''
         }
     }
@@ -18,21 +16,19 @@ class Report extends Component {
  
             <div className="container">
                 <form onSubmit = {(e) => this.forSubmit(e)}>
-                    <label htmlFor="fname">First Name</label>
-                    <input type="text" id="fname" name="firstName" placeholder="Your name.." value = {this.state.firstName} 
-                    onChange={e => this.setState({ firstName: e.target.value})}></input>
-
-                    <label htmlFor="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastName" placeholder="Your last name.." value = {this.state.lastName} 
-                    onChange={e => this.setState({ lastName: e.target.value})}></input>
-
-                    <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Your phone number.." value = {this.state.phone}
-                    onChange={e => this.setState({ phone: e.target.value})}></input>
                     
                     <label htmlFor="machineId"> Machine ID</label>
                     <input type="text" id="machineId" name="machineId" placeholder={this.state.machineId} value = {this.state.machineId}
                     onChange={e => this.setState({ lastName: e.target.value})}></input>
+
+                    <label>
+                        Select the issue type:
+                        <select name="issueType" id="issueType" value = {this.state.value} onChange = {e => this.setState({ issueType: e.target.value})}>
+                            <option value="occupied">occupied</option>
+                            <option value="broken">broken</option>
+                            <option value="other">other</option>
+                        </select>
+                    </label>
 
                     <label htmlFor="issue">Issue</label>
                     <textarea id="issue" name="issue" placeholder="Write down the issue.." 
@@ -46,10 +42,8 @@ class Report extends Component {
         // prevent the from default action
         e.preventDefault();
         let data = {
-            firstName : this.state.firstName,
-            lastName : this.state.lastName,
-            phone: this.state.phone,
             machineId : this.state.machineId,
+            issueType: this.state.issueType,
             issue: this.state.issue
         }
         console.log(data);
