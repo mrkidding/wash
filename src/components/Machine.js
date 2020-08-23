@@ -35,7 +35,13 @@ class Machine extends Component {
     };
 
     render() {
-        const {status, remaining_time, id, machineType} = this.props;
+        const {status, id, machineType} = this.props;
+        let {remaining_time} = this.props;
+        if (remaining_time < 0){
+            remaining_time = "Not fetched"
+        }else {
+            remaining_time = remaining_time + " mins"
+        }
         let icon = "icon-available";
         let top = "hi";
         if (machineType === "washer"){
@@ -73,7 +79,7 @@ class Machine extends Component {
                 top = "Damaged";
             }
         }
-        console.log(icon);
+
 
 
         return (

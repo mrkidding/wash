@@ -6,12 +6,14 @@ import using_logo from '../assets/status_logo/using_logo.svg';
 import finished_logo from '../assets/status_logo/finished_logo.svg';
 import occupied_logo from '../assets/status_logo/occupied_logo.svg';
 import Display from "./Display";
+
 const { TabPane } = Tabs;
 
 class NavBar extends Component {
     handleClick = e => {
         console.log('click ', e);
     };
+    /*
     state = {
         washerList: [
             {
@@ -100,15 +102,18 @@ class NavBar extends Component {
                 id: "15"
             }
         ],
-    };
+    };*/
+
+    /*
+    state = {
+        washerList : null,
+        dryerList : null
+    }*/
+
     render() {
-        const {machineType} = this.props;
-        let machineList = null;
-        if (machineType === "washer"){
-            machineList = this.state.washerList;
-        }else {
-            machineList = this.state.dryerList;
-        }
+        const {machineType, machineList, user_id} = this.props;
+
+        //machineList = this.state.washerList; // 暂时测试
         return (
             <Tabs  defaultActiveKey="1" tabPosition="left" size="large" >
                 <TabPane
@@ -120,7 +125,7 @@ class NavBar extends Component {
                     }
                     key="1"
                 >
-                    <Display machineList={machineList} choosen="all" machineType={machineType}/>
+                    <Display machineList={machineList} choosen="all" machineType={machineType} user_id={user_id}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -131,7 +136,7 @@ class NavBar extends Component {
                     }
                     key="2"
                 >
-                    <Display machineList={machineList} choosen="available" machineType={machineType}/>
+                    <Display machineList={machineList} choosen="available" machineType={machineType} user_id={user_id}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -142,7 +147,7 @@ class NavBar extends Component {
                     }
                     key="3"
                 >
-                    <Display machineList={machineList} choosen="using" machineType={machineType}/>
+                    <Display machineList={machineList} choosen="using" machineType={machineType} user_id={user_id}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -153,7 +158,7 @@ class NavBar extends Component {
                     }
                     key="4"
                 >
-                    <Display machineList={machineList} choosen="finished" machineType={machineType}/>
+                    <Display machineList={machineList} choosen="finished" machineType={machineType} user_id={user_id}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -164,7 +169,7 @@ class NavBar extends Component {
                     }
                     key="5"
                 >
-                    <Display machineList={machineList} choosen="occupied" machineType={machineType}/>
+                    <Display machineList={machineList} choosen="occupied" machineType={machineType} user_id={user_id}/>
                 </TabPane>
             </Tabs>
         );

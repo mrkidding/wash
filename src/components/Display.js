@@ -25,31 +25,64 @@ class Display extends Component {
     };
 
     render() {
-        let {machineList, choosen, machineType} = this.props;
+        let {machineList, choosen, machineType, user_id} = this.props;
+        console.log(user_id);
+        /*
         if (choosen !== "all") {
             machineList = machineList.filter((machine) => {
-                    return machine.status === choosen;
+                    return machine.condition === choosen;
                 }
+            )
+        }*/
+
+        let MachineDom = null;
+        if (machineList !== null){
+            MachineDom = (
+                <div className="Display">
+                    {
+                        machineList.map((machine) => {
+                            let status = null;
+                            let de= machine.end_time.replace(/\-/g, "/");
+                            let de1 = new Date(de);
+                            let dn = new Date();
+                            let dd = de1.getTime() - dn.getTime();
+                            let remaining_time = Math.round(dd/(60*1000));
+                            console.log(de1);
+                            console.log(dn);
+                            console.log(dd);
+                            console.log(remaining_time);
+                            if (machine.condition === "available"){
+                                status = "available";
+                            }else if (machine.condition === "damaged"){
+                                status = "damaged";
+                            }else {
+                                if (user_id !== machine.user_id) {
+                                    status = "occupied";
+                                    console.log(remaining_time);
+                                }else if (remaining_time < 0){
+                                    status = "finished";
+                                }else {
+                                    status = "using";
+                                }
+                            }
+                            if (status === choosen || choosen === "all"){
+                                return (
+                                    // 对map 循环出来的每个属性插入标签元素
+                                    <Machine status={status}
+                                             remaining_time={remaining_time}
+                                             id={machine.item_id}
+                                             machineType={machineType}
+                                    />
+                                )
+                            }else {
+                                return null;
+                            }
+                        })
+                    }
+                </div>
             )
         }
 
-        let MachineDom = null;
-        MachineDom = (
-            <div className="Display">
-                {
-                    machineList.map((machine) => {
-                        return (
-                            // 对map 循环出来的每个属性插入标签元素
-                                <Machine status={machine.status}
-                                         remaining_time={machine.remaining_time}
-                                         id={machine.id}
-                                         machineType={machineType}
-                                />
-                        )
-                    })
-                }
-            </div>
-        )
         return (
             <div>
                 {MachineDom}
