@@ -2,21 +2,25 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Main from "./Main";
 import Footer from "./Footer";
-import {TOKEN_KEY} from '../constants';
+import {TOKEN_KEY, USER_NAME} from '../constants';
 import '../styles/App.css';
 
 class App extends Component {
     state = {
         isLoggedIn: Boolean(localStorage.getItem(TOKEN_KEY)),
+        name: localStorage.getItem(USER_NAME),
     }
 
-    handleLoginSucceed = (token) => {
+    handleLoginSucceed = (token, values) => {
+        console.log(values)
         localStorage.setItem(TOKEN_KEY, token)
-        this.setState({isLoggedIn: true});
+        localStorage.setItem(USER_NAME, values.username)
+        this.setState({isLoggedIn: true, name: values.username});
     }
     handleLogout = () => {
         localStorage.removeItem(TOKEN_KEY);
-        this.setState({isLoggedIn: false});
+        localStorage.removeItem(USER_NAME);
+        this.setState({isLoggedIn: false, values: null});
     }
 
     render() {
@@ -28,6 +32,7 @@ class App extends Component {
 
                 <Main handleLoginSucceed={this.handleLoginSucceed}
                       isLoggedIn={this.state.isLoggedIn}
+                      user_id={this.state.name}
                 />
 
                 <Footer />

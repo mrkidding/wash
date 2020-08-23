@@ -4,19 +4,28 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import Login from './Login';
 import NavBar from "./NavBar";
 import Report from "./Report";
+import {GET_ALL_MACHINES_URL} from "../constants";
+import axios from "axios";
+
 
 class Main extends Component {
+
+    state = {
+        washerList: null,
+        dryerList: null,
+        user_id: this.props.user_id,
+    }
     getLogin = () => {
         return this.props.isLoggedIn ? <Redirect to="/washer"/> :
             <Login handleLoginSucceed={this.props.handleLoginSucceed}/>;
     }
 
     getWasher = () => {
-        return this.props.isLoggedIn ? <NavBar machineType="washer"/> :
+        return this.props.isLoggedIn ? <NavBar machineType="washer" machineList={this.state.washerList} user_id={this.state.user_id}/> :
             <Redirect to="/login"/>;
     }
     getDryer = () => {
-        return this.props.isLoggedIn ? <NavBar machineType="dryer"/> :
+        return this.props.isLoggedIn ? <NavBar machineType="dryer" machineList={this.state.dryerList} user_id={this.state.user_id}/> :
             <Redirect to="/login"/>;
     }
     getReport = () => {
@@ -24,7 +33,32 @@ class Main extends Component {
             <Redirect to="/login"/>;
     }
 
+    getALLMachines = () => {   //We only have washer now. URL should be getallwasher
+        const url = `${GET_ALL_MACHINES_URL}`;
+        axios.get(url)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    washerList: response.data.filter((machine) =>
+                        machine.type === "washer"),
+                    dryerList: response.data.filter((machine) =>
+                        machine.type === "dryer"),
+                })
+            })
+            .catch(error => {
+                console.log('err in fetch machines -> ', error);
+            })
+    }
+    generateTwoLists = () => {
+        console.log(this.state.washerList)
+        console.log(this.state.dryerList)
+    }
+    componentDidMount() {
+        this.getALLMachines();
+    }
+
     render() {
+        this.generateTwoLists();
         return (
             <div className="main">
                 <Switch>
