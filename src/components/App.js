@@ -17,6 +17,7 @@ class App extends Component {
         localStorage.setItem(USER_NAME, values.username)
         this.setState({isLoggedIn: true, name: values.username});
     }
+
     handleLogout = () => {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(USER_NAME);
