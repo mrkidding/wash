@@ -30,7 +30,6 @@ class Header extends Component {
                             <Link to="/report">report</Link>
                         </Menu.Item>
                     </Menu>: null
-
                 }
 
                 {this.props.isLoggedIn ?

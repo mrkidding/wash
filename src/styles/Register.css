@@ -1,4 +1,23 @@
+.picture {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    left: 8%;
+    top: 10%;
+}
+
 .register {
     width: 500px;
-    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+}
+
+.register-form-button {
+    width: 334px;
+    margin-top: 20px;
+}
+
+.password {
+    margin-bottom: 17px;
 }

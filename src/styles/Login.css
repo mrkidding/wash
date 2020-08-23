@@ -1,8 +1,21 @@
-.login-form {
+.picture {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    left: 8%;
+    top: 10%;
+}
+
+#img-tip {
+    position: absolute;
+    left: 55%;
+    top: 40%;
     width: 300px;
-    margin: 0 auto;
 }
 
 .login-form-button {
     width: 300px;
+    margin-top: 10px;
 }
+
+
