@@ -25,13 +25,10 @@ class NormalLoginForm extends Component {
                     })
                     .then((data) => {
                         console.log(data);
-<<<<<<< HEAD
                         this.props.handleLoginSucceed(data);
                         message.success("Login Success");
-=======
-                        this.props.handleLoginSucceed(data, values)
-                        message.success("Login Success")
->>>>>>> ca83e73fe35c2581f94d38136cdc136f376e6ffa
+                        this.props.handleLoginSucceed(data, values);
+                        message.success("Login Success");
                     })
                     .catch((err) => {
                         console.error(err);
