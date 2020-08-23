@@ -7,7 +7,7 @@ class Report extends Component {
     constructor(props){
         super(props);
         this.state = {
-            machineId : this.props.machineId,
+            item_id : this.props.machineId,
             issueType:'occupied',
             issue: ''
         }
@@ -18,9 +18,9 @@ class Report extends Component {
             <div className="container">
                 <form onSubmit = {(e) => this.forSubmit(e)}>
                     
-                    <label htmlFor="machineId"> Machine ID</label>
-                    <input type="text" id="machineId" name="machineId" placeholder={this.state.machineId} value = {this.state.machineId}
-                    onChange={e => this.setState({ lastName: e.target.value})}></input>
+                    <label htmlFor="item_id"> Machine ID</label>
+                    <input type="text" id="item_id" name="item_id" placeholder={this.state.item_id} value = {this.state.item_id}
+                    onChange={e => this.setState({ item_id: e.target.value})}></input>
 
                     <label>
                         Select the issue type:
@@ -43,12 +43,12 @@ class Report extends Component {
         // prevent the from default action
         e.preventDefault();
         let data = {
-            machineId : this.state.machineId,
+            item_id : this.state.item_id,
             issueType: this.state.issueType,
             issue: this.state.issue
         }
         console.log(data);
-        axios.post('API_URI', data)
+        axios.post('http://localhost:8080/washer/report', data)
         .then(res => {
             console.log("sent")
         })
