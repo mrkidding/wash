@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { Tabs } from 'antd';
+import {Tabs, Button, message} from 'antd';
 import xiyiji from '../assets/status_logo/xiyiji.svg';
 import available_logo from '../assets/status_logo/available_logo.svg';
 import using_logo from '../assets/status_logo/using_logo.svg';
 import finished_logo from '../assets/status_logo/finished_logo.svg';
 import occupied_logo from '../assets/status_logo/occupied_logo.svg';
 import Display from "./Display";
+
 
 const { TabPane } = Tabs;
 
@@ -109,13 +110,18 @@ class NavBar extends Component {
         washerList : null,
         dryerList : null
     }*/
-
+    Refresh = () => {
+        this.props.Refresh();
+        message.success('Reloading machines successfully.');
+    }
     render() {
-        const {machineType, machineList, user_id} = this.props;
+        const operations = <Button className="Refresh" type="dashed" icon ="reload" onClick={this.Refresh}>Refresh</Button>;
+        const {machineType, machineList} = this.props;
 
         //machineList = this.state.washerList; // 暂时测试
         return (
-            <Tabs  defaultActiveKey="1" tabPosition="left" size="large" >
+            <div>
+            <Tabs  defaultActiveKey="1" tabPosition="left" size="large" tabBarExtraContent={operations}>
                 <TabPane
                     tab={
                         <span className="tab-text">
@@ -125,7 +131,7 @@ class NavBar extends Component {
                     }
                     key="1"
                 >
-                    <Display machineList={machineList} choosen="all" machineType={machineType} user_id={user_id}/>
+                    <Display machineList={machineList} choosen="all" machineType={machineType}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -136,7 +142,7 @@ class NavBar extends Component {
                     }
                     key="2"
                 >
-                    <Display machineList={machineList} choosen="available" machineType={machineType} user_id={user_id}/>
+                    <Display machineList={machineList} choosen="available" machineType={machineType}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -147,7 +153,7 @@ class NavBar extends Component {
                     }
                     key="3"
                 >
-                    <Display machineList={machineList} choosen="using" machineType={machineType} user_id={user_id}/>
+                    <Display machineList={machineList} choosen="using" machineType={machineType}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -158,7 +164,7 @@ class NavBar extends Component {
                     }
                     key="4"
                 >
-                    <Display machineList={machineList} choosen="finished" machineType={machineType} user_id={user_id}/>
+                    <Display machineList={machineList} choosen="finished" machineType={machineType}/>
                 </TabPane>
                 <TabPane
                     tab={
@@ -169,9 +175,10 @@ class NavBar extends Component {
                     }
                     key="5"
                 >
-                    <Display machineList={machineList} choosen="occupied" machineType={machineType} user_id={user_id}/>
+                    <Display machineList={machineList} choosen="occupied" machineType={machineType}/>
                 </TabPane>
             </Tabs>
+            </div>
         );
     }
 }

@@ -5,9 +5,20 @@
 .tab-text{
     display: flex;
 }
-
+.bg-picture {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+    z-index: -1;
+}
 .status-logo {
     height: 22px;
     margin-right: 10px;
+}
+
+.Refresh {
+    margin-top: 20px;
 }
 

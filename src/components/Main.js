@@ -13,7 +13,6 @@ class Main extends Component {
     state = {
         washerList: null,
         dryerList: null,
-        user_id: this.props.user_id,
     }
     getLogin = () => {
         return this.props.isLoggedIn ? <Redirect to="/washer"/> :
@@ -21,11 +20,11 @@ class Main extends Component {
     }
 
     getWasher = () => {
-        return this.props.isLoggedIn ? <NavBar machineType="washer" machineList={this.state.washerList} user_id={this.state.user_id}/> :
+        return this.props.isLoggedIn ? <NavBar machineType="washer" machineList={this.state.washerList}  Refresh={this.getALLMachines}/> :
             <Redirect to="/login"/>;
     }
     getDryer = () => {
-        return this.props.isLoggedIn ? <NavBar machineType="dryer" machineList={this.state.dryerList} user_id={this.state.user_id}/> :
+        return this.props.isLoggedIn ? <NavBar machineType="dryer" machineList={this.state.dryerList}  Refresh={this.getALLMachines}/> :
             <Redirect to="/login"/>;
     }
     getReport = () => {
@@ -34,6 +33,7 @@ class Main extends Component {
     }
 
     getALLMachines = () => {   //We only have washer now. URL should be getallwasher
+
         const url = `${GET_ALL_MACHINES_URL}`;
         axios.get(url)
             .then(response => {

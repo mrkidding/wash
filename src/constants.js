@@ -6,3 +6,4 @@ export const USER_NAME = 'USER_VALUES';
 
 export const GET_ALL_MACHINES_URL = "http://localhost:8080/washer/getAllMachines";
 
+export const RESERVE_URL = "http://localhost:8080/washer/changeMachineStatus";

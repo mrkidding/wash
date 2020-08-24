@@ -21,21 +21,21 @@ class Header extends Component {
                 {this.props.isLoggedIn ?
                     <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{fontSize: '16px'}}>
                         <Menu.Item key="1" icon={<IconFont type="icon-shuidi" style={{fontSize: '17px'}}/>}>
-                            <Link to="/washer">washer</Link>
+                            <Link to="/washer">Washer</Link>
                         </Menu.Item>
                         <Menu.Item key="2" icon={<IconFont type="icon-honggan1" style={{fontSize: '17px'}}/>}>
-                            <Link to="/dryer">dryer</Link>
+                            <Link to="/dryer">Dryer</Link>
                         </Menu.Item>
                         <Menu.Item key="3" icon={<FormOutlined/>}>
-                            <Link to="/report">report</Link>
+                            <Link to="/report">Report</Link>
                         </Menu.Item>
                     </Menu>: null
                 }
 
                 {this.props.isLoggedIn ?
-                    <a className="logout" onClick={this.props.handleLogout}>
+                    <div className="logout" onClick={this.props.handleLogout}>
                         <LogoutOutlined/>{' '}Logout
-                    </a> : null}
+                    </div> : null}
             </header>
         );
     }

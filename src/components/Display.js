@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Machine from "./Machine";
+import {USER_NAME} from "../constants";
 
 class Display extends Component {
     state = { visible: false };
@@ -25,7 +26,8 @@ class Display extends Component {
     };
 
     render() {
-        let {machineList, choosen, machineType, user_id} = this.props;
+        const user_id = localStorage.getItem(USER_NAME);
+        let {machineList, choosen, machineType} = this.props;
         console.log(user_id);
         /*
         if (choosen !== "all") {
@@ -41,16 +43,12 @@ class Display extends Component {
                 <div className="Display">
                     {
                         machineList.map((machine) => {
-                            let status = null;
+                            let status;
                             let de= machine.end_time.replace(/\-/g, "/");
                             let de1 = new Date(de);
                             let dn = new Date();
                             let dd = de1.getTime() - dn.getTime();
                             let remaining_time = Math.round(dd/(60*1000));
-                            console.log(de1);
-                            console.log(dn);
-                            console.log(dd);
-                            console.log(remaining_time);
                             if (machine.condition === "available"){
                                 status = "available";
                             }else if (machine.condition === "damaged"){
