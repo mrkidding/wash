@@ -7,12 +7,13 @@ class Report extends Component {
     constructor(props){
         super(props);
         this.state = {
-            item_id : this.props.machineId,
+            item_id : this.props.id,
             issueType:'occupied',
             issue: ''
         }
     }
     render() {
+        console.log(this.props.location);
         return (
  
             <div className="container">

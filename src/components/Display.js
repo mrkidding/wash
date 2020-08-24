@@ -70,6 +70,7 @@ class Display extends Component {
                                              remaining_time={remaining_time}
                                              id={machine.item_id}
                                              machineType={machineType}
+                                             machine={machine}
                                     />
                                 )
                             }else {

@@ -6,12 +6,13 @@
     display: flex;
 }
 .bg-picture {
-    width: 700px;
-    height: 700px;
+    width: 40%;
+    height: 70%;
     position: absolute;
     right: 8%;
     bottom: 10%;
     z-index: -1;
+    opacity: 0.25;
 }
 .status-logo {
     height: 22px;

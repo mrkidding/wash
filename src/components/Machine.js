@@ -63,12 +63,14 @@ class Machine extends Component {
     }
 
     render() {
-        const {status, id, machineType} = this.props;
+        const {status, id, machineType, machine} = this.props;
+        //const brand = machine.brand;
+        console.log(machine);
         let {remaining_time} = this.props;
         if (remaining_time < 0){
             remaining_time = "Not fetched"
         }else {
-            remaining_time = remaining_time + " mins"
+            remaining_time = remaining_time + " mins left"
         }
         let icon;
         let top;
@@ -151,15 +153,14 @@ class Machine extends Component {
                         />
                     </div>
                     <div className="right_detail_side">
-                        <b>SPEED QUEEN</b>
-                        <p> {machineType} </p>
+                        <p><b>{machine.brand}</b></p>
+                        <p><b>Type:</b> {machine.type} </p>
                         <p><b>Machine ID:</b>   {id} </p>
                         <p><b>Status:</b> {status} </p>
-                        <p><b>Host:</b> someone using this machine </p>
-                        <p><b>Remaining Time:</b>  {remaining_time} </p>
+                        <p><b>Host:</b> {machine.user_id} </p>
+                        <p><b>Info:</b>  {remaining_time} </p>
                         {buttonDom}
-                        <Link to="/report"
-                              machineId={id}
+                        <Link to={{pathname: 'report/', query:{id: id}}}
                         ><Button className="reportButton">Report</Button></Link>
                     </div>
                 </Modal>

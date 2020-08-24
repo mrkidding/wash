@@ -87,7 +87,7 @@ class RegistrationForm extends Component {
 
         return (
             <div>
-                <img src={picture} className="picture"/>
+                <img src={picture} className="picture" alt="picture"/>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register">
                     <Form.Item
                         label="Username"

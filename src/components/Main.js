@@ -27,8 +27,14 @@ class Main extends Component {
         return this.props.isLoggedIn ? <NavBar machineType="dryer" machineList={this.state.dryerList}  Refresh={this.getALLMachines}/> :
             <Redirect to="/login"/>;
     }
-    getReport = () => {
-        return this.props.isLoggedIn ? <Report firstName="" phone=""/> :
+    getReport = (props) => {
+        console.log(props);
+        let id = null;
+        if (props && props.location && props.location.query){
+            id = props.location.query.id;
+        }
+
+        return this.props.isLoggedIn ? <Report id={id}/> :
             <Redirect to="/login"/>;
     }
 
@@ -70,7 +76,7 @@ class Main extends Component {
 
                     <Route path="/dryer" render={this.getDryer}/>
 
-                    <Route path="/report" render={this.getReport}/>
+                    <Route path="/report/" render={(props) => this.getReport(props)}/>
 
                     <Route render={this.getLogin}/>
 

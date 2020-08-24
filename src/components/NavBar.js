@@ -6,6 +6,7 @@ import using_logo from '../assets/status_logo/using_logo.svg';
 import finished_logo from '../assets/status_logo/finished_logo.svg';
 import occupied_logo from '../assets/status_logo/occupied_logo.svg';
 import Display from "./Display";
+import picture from "../assets/login_register.png";
 
 
 const { TabPane } = Tabs;
@@ -121,6 +122,7 @@ class NavBar extends Component {
         //machineList = this.state.washerList; // 暂时测试
         return (
             <div>
+                <img src={picture} className="bg-picture"/>
             <Tabs  defaultActiveKey="1" tabPosition="left" size="large" tabBarExtraContent={operations}>
                 <TabPane
                     tab={
