@@ -41,7 +41,7 @@ class RegistrationForm extends Component {
                     method: 'POST',
                     body: JSON.stringify({
                         user_id: values.username,
-                        phone_number: values.phone_number,
+                        email: values.email,
                         password: values.password,
                     }),
                 })
@@ -87,7 +87,7 @@ class RegistrationForm extends Component {
 
         return (
             <div>
-                <img src={picture} className="picture" alt="picture"/>
+                <img src={picture} className="picture" alt="washer helper"/>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register">
                     <Form.Item
                         label="Username"
@@ -97,10 +97,10 @@ class RegistrationForm extends Component {
                         })(<Input/>)}
                     </Form.Item>
                     <Form.Item
-                        label="Phone number"
+                        label="Email"
                     >
-                        {getFieldDecorator('phone_number', {
-                            rules: [{required: true, message: 'Please input your phone number!'}],
+                        {getFieldDecorator('email', {
+                            rules: [{required: true, message: 'Please input your email!'}],
                         })(<Input/>)}
                     </Form.Item>
                     <Form.Item label="Password" hasFeedback>

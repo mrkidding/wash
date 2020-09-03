@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Tabs, Button, message} from 'antd';
 import xiyiji from '../assets/status_logo/xiyiji.svg';
 import available_logo from '../assets/status_logo/available_logo.svg';
+import reserved_logo from '../assets/status_logo/reserved_logo.svg';
 import using_logo from '../assets/status_logo/using_logo.svg';
 import finished_logo from '../assets/status_logo/finished_logo.svg';
 import occupied_logo from '../assets/status_logo/occupied_logo.svg';
@@ -122,7 +123,7 @@ class NavBar extends Component {
         //machineList = this.state.washerList; // 暂时测试
         return (
             <div>
-                <img src={picture} className="bg-picture"/>
+                <img src={picture} className="bg-picture" alt=""/>
             <Tabs  defaultActiveKey="1" tabPosition="left" size="large" tabBarExtraContent={operations}>
                 <TabPane
                     tab={
@@ -149,11 +150,22 @@ class NavBar extends Component {
                 <TabPane
                     tab={
                         <span className="tab-text">
+                            <img src={reserved_logo} className="status-logo" alt="logo"/>
+                            Reserved
+                        </span>
+                    }
+                    key="3"
+                >
+                    <Display machineList={machineList} choosen="reserved" machineType={machineType}/>
+                </TabPane>
+                <TabPane
+                    tab={
+                        <span className="tab-text">
                             <img src={using_logo} className="status-logo" alt="logo"/>
                             Using
                         </span>
                     }
-                    key="3"
+                    key="4"
                 >
                     <Display machineList={machineList} choosen="using" machineType={machineType}/>
                 </TabPane>
@@ -164,7 +176,7 @@ class NavBar extends Component {
                             Finished
                         </span>
                     }
-                    key="4"
+                    key="5"
                 >
                     <Display machineList={machineList} choosen="finished" machineType={machineType}/>
                 </TabPane>
@@ -175,7 +187,7 @@ class NavBar extends Component {
                             Occupied
                         </span>
                     }
-                    key="5"
+                    key="6"
                 >
                     <Display machineList={machineList} choosen="occupied" machineType={machineType}/>
                 </TabPane>

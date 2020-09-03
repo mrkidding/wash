@@ -40,7 +40,7 @@ class NormalLoginForm extends Component {
         const {getFieldDecorator} = this.props.form;
         return (
             <div>
-                <img src={picture} className="picture"/>
+                <img src={picture} className="picture" alt="washer helper"/>
                 <Form onSubmit={this.handleSubmit} id="img-tip">
                     <Form.Item>
                         {getFieldDecorator('username', {

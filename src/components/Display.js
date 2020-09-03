@@ -44,23 +44,29 @@ class Display extends Component {
                     {
                         machineList.map((machine) => {
                             let status;
-                            let de= machine.end_time.replace(/\-/g, "/");
-                            let de1 = new Date(de);
-                            let dn = new Date();
-                            let dd = de1.getTime() - dn.getTime();
-                            let remaining_time = Math.round(dd/(60*1000));
+                            let remaining_time = null;
+                            if (machine.end_time != null){
+                                let de= machine.end_time.replace(/\-/g, "/");
+                                let de1 = new Date(de);
+                                let dn = new Date();
+                                let dd = de1.getTime() - dn.getTime();
+                                remaining_time = Math.round(dd/(60*1000));
+                            }
+
                             if (machine.condition === "available"){
                                 status = "available";
-                            }else if (machine.condition === "damaged"){
+                            }else if (machine.condition === "damaged") {
                                 status = "damaged";
                             }else {
                                 if (user_id !== machine.user_id) {
                                     status = "occupied";
                                     console.log(remaining_time);
-                                }else if (remaining_time < 0){
-                                    status = "finished";
-                                }else {
+                                }else if (machine.condition === "reserve"){
+                                    status = "reserved";
+                                }else if (machine.condition === "start") {
                                     status = "using";
+                                }else {
+                                    status = "finished";
                                 }
                             }
                             if (status === choosen || choosen === "all"){
