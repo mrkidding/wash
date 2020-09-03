@@ -49,6 +49,7 @@ class Report extends Component {
             issue: this.state.issue
         }
         console.log(data);
+        axios.defaults.withCredentials = true;
         axios.post('http://localhost:8080/washer/report', data)
         .then(res => {
             console.log("sent")
